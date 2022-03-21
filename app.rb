@@ -1,10 +1,12 @@
 class App
+  # rubocop:disable Lint/UnreachableLoop
   def run
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
       option = gets.chomp.to_i
       break if option == '13'
+
       puts '----'
       print "Thank you for using the Catalog of Things!\n"
       puts '----'
@@ -12,6 +14,7 @@ class App
     end
   end
 
+  # rubocop:enable Lint/UnreachableLoop
   def menu
     puts
     puts 'Please choose an option by entering a number'
@@ -27,12 +30,9 @@ class App
     puts '10 - Add a music album'
     puts '11 - Add a movie'
     puts '12 - Add a game'
-    puts "13 - Exit\n"    
+    puts "13 - Exit\n"
     print "\n[Your Choice?]: "
-
   end
-
- 
 
   # rubocop:disable Metrics/CyclomaticComplexity
   def get_num(option)
