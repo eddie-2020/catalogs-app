@@ -3,7 +3,7 @@ class App
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
-      option = input
+      option = get.chomp
       break if option == '13'
     end
     puts 'Thank you for using the Catalog of Things!'
