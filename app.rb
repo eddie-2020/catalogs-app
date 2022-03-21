@@ -3,10 +3,13 @@ class App
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
-      option = get.chomp
+      option = gets.chomp.to_i
       break if option == '13'
+      puts '----'
+      print "Thank you for using the Catalog of Things!\n"
+      puts '----'
+      exit!
     end
-    puts 'Thank you for using the Catalog of Things!'
   end
 
   def menu
@@ -24,8 +27,12 @@ class App
     puts '10 - Add a music album'
     puts '11 - Add a movie'
     puts '12 - Add a game'
-    puts '13 - Exit'
+    puts "13 - Exit\n"    
+    print "\n[Your Choice?]: "
+
   end
+
+ 
 
   # rubocop:disable Metrics/CyclomaticComplexity
   def get_num(option)
@@ -55,7 +62,7 @@ class App
     when '12'
       add_game
     else
-      puts 'Please enter a number between 1 and 7'
+      puts 'Please enter a number between 1 and 13'
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
