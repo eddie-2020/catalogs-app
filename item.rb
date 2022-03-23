@@ -1,12 +1,13 @@
 require 'date'
 # frozen_string_literal: true
 
+# rubocop: disable Style/OptionalBooleanParamete
 class Item
   attr_accessor :publish_date, :archived
   attr_reader :id
   attr_writer :author, :source, :label, :genre
 
-  def initialize(publish_date, archived)
+  def initialize(publish_date, archived = false)
     @id = Random.rand(1..1000)
     @publish_date = publish_date
     @archived = archived
@@ -40,3 +41,4 @@ class Item
     @archived = true if can_be_archived? == true
   end
 end
+# rubocop: enable Style/OptionalBooleanParamete
