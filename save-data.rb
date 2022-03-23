@@ -16,7 +16,6 @@ class SaveData
         @json_data.clear
         @json_data.push(data)
         parsed_data.each { |d| @json_data.push(d) }
-  
       end
       File.open(file_name, 'w') { |f| f.puts @json_data.to_json }
     end
