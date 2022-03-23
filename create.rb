@@ -1,15 +1,23 @@
-class CreateCatalog
-  def add_game
-    puts 'Enter multiplayer: '
-    multiplayer = get.chomp
+require './main'
 
-    puts 'Enter the last played date in this format [YYYY-MM-DD]: '
+class CreateCatalogs
+  def initialize(games)
+    @games = games
+  end
+end
+
+class AddGames < CreateCatalogs
+  def add_game
+    print "\nEnter multiplayer: " 
+    multiplayer = gets.chomp
+
+    print "\nEnter the last played date in this format [YYYY-MM-DD]: " 
     last_played_at = gets.chomp
 
-    puts 'Enter the published date in this format [YYYY-MM-DD]: '
-    publish_date = gets.chomp
+    print "\nEnter the published date in this format [YYYY-MM-DD]: "
+    publish_date = gets.chomp.to_s
 
     @games << Game.new(multiplayer, last_played_at, publish_date)
-    puts 'Game added successfully!'
+    puts "\nGame added successfully!"
   end
 end

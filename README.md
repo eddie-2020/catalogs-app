@@ -2,7 +2,7 @@
 
 Here in this project we have implemented the following requirements:
 
-- Create Item class in a separate .rb file.
+- Create Item class in a `item.rb` file.
 
 - All Item class properties visible in the diagram should be defined and set up in the constructor method. Exception: properties for the 1-to-many relationships should NOT be set in the constructor method. Instead, they should have a custom setter method created.
 
