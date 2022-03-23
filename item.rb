@@ -1,15 +1,15 @@
 require 'date'
-# frozen_string_literal: true
 
 class Item
   attr_accessor :publish_date, :archived
-  attr_reader :id
-  attr_writer :author, :source, :label, :genre
+  attr_reader :id, :label
+  attr_writer :author, :source, :genre
 
   def initialize(publish_date, archived)
     @id = Random.rand(1..1000)
     @publish_date = publish_date
     @archived = archived
+    @label = label
   end
 
   # setter methods
@@ -25,8 +25,9 @@ class Item
     @source = source
   end
 
-  def label(label)
+  def label=(label)
     @label = label
+    label.item.push(self) unless label.item.include?(self)
   end
 
   def can_be_archived?
