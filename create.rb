@@ -8,10 +8,10 @@ end
 
 class AddGames < CreateCatalogs
   def add_game
-    print "\nEnter multiplayer: " 
+    print "\nEnter multiplayer: "
     multiplayer = gets.chomp
 
-    print "\nEnter the last played date in this format [YYYY-MM-DD]: " 
+    print "\nEnter the last played date in this format [YYYY-MM-DD]: "
     last_played_at = gets.chomp
 
     print "\nEnter the published date in this format [YYYY-MM-DD]: "

@@ -26,9 +26,9 @@ class Main
       when 12
         AddGames.new(@games).add_game
       when 13
-        puts "----"
+        puts '----'
         puts "Thank you for using Catalog Of Things\n"
-        puts "----"
+        puts '----'
         exit
       end
     end
