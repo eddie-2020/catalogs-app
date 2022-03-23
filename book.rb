@@ -12,8 +12,7 @@ class Book < Item
   def can_be_archived?
     current = Date.today
     difference_in_days = (current - @publish_date).to_i
-    
-    (difference_in_days / 365.25) > 10 || @cover_state == "bad"
-  end
 
+    (difference_in_days / 365.25) > 10 || @cover_state == 'bad'
+  end
 end
