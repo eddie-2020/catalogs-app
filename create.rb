@@ -4,13 +4,13 @@ require_relative './save-data'
 # require_relative './author'
 require_relative './genre'
 require_relative './to-hash'
-
+require 'pry'
 class CreateMusicAlbum 
     def create
         data = SaveData.new
         to_hash = ToHash.new
         #get publish date
-        puts 'Publish Date[yy-mm-dd]: '
+        puts 'Publish Date[yy/mm/dd]: '
         publish_date = gets.chomp.to_s
         #get if album is on spotify
         puts 'Is music album on spotify? [Y/N]'
@@ -36,7 +36,8 @@ class CreateMusicAlbum
         color = gets.chomp        
         # check if archived
         puts 'Is album archived? [Y/N]'
-        archived = gets.chomp.downcase == 'y'
+        # archived = gets.chomp.downcase == 'y'
+
         #create author, genre, label objects
 
         # author = Author.new(first_name, last_name)
@@ -44,7 +45,9 @@ class CreateMusicAlbum
         genre = Genre.new(genre_name)
 
         musicalbum = MusicAlbum.new(publish_date, on_spotify)
-
+        
+        archived = musicalbum.move_to_archive
+        puts archived
         # author.add_item(musicalbum)
         # label.add_item(musicalbum)
         genre.add_item(musicalbum)

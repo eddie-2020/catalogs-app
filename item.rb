@@ -7,10 +7,9 @@ class Item
   attr_reader :id
   attr_accessor :author, :source, :label, :genre
   
-  def initialize(publish_date, archived = false)
+  def initialize(publish_date)
     @id = Random.rand(1..1000)
-    @publish_date = publish_date
-    @archived = archived
+    @publish_date = Date.parse(publish_date)
   end
 
   # setter methods
@@ -35,13 +34,16 @@ class Item
 
   def can_be_archived?
     current = Date.today
-
-    difference_in_days = (current - @publish_date).to_i
-    (difference_in_days / 365.25) > 10
+    current.year - @publish_date.year > 10
   end
 
   def move_to_archive
-    @archived = true if can_be_archived? == true
+    # @archived = true if can_be_archived? == true
+    if can_be_archived?
+      @archived = true
+    else
+      @archived = false
+    end
   end
 end
 # rubocop: enable Style/OptionalBooleanParamete
