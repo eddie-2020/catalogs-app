@@ -1,9 +1,19 @@
+require_relative './create'
+require_relative './list'
+
 class App
+  def initialize
+    @books = []
+    @labels = []
+  end
+
   def run
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
-      option = get.chomp
+      option = gets.chomp
+
+      get_num option
       break if option == '13'
     end
     puts 'Thank you for using the Catalog of Things!'
@@ -59,44 +69,4 @@ class App
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
-
-  def list_all_books
-    sleep 0.75
-  end
-
-  def list_all_music_albums
-    sleep 0.75
-  end
-
-  def list_all_movies
-    sleep 0.75
-  end
-
-  def list_all_games
-    sleep 0.75
-  end
-
-  def list_all_genres
-    sleep 0.75
-  end
-
-  def list_all_labels
-    sleep 0.75
-  end
-
-  def list_all_authors
-    sleep 0.75
-  end
-
-  def list_all_sources
-    sleep 0.75
-  end
-
-  def add_book; end
-
-  def add_music_album; end
-
-  def add_movie; end
-
-  def add_game; end
 end
