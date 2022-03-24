@@ -33,15 +33,15 @@ def add_book
   puts 'Please enter publish date in the following formet[yy-mm-dd]'
   publish_date = gets.chomp.to_s
 
-  puts 'Has the book been archived? [y/n]'
+  puts 'Has the book been archived? [true/false]'
   archived = gets.chomp.downcase == 'y'
 
   # author = Author.new(first_name, last_name)
-  label = Label.new(title, color)
+  label = Label.new(title, color, )
   # genre = Genre.new(name)
 
   book = Book.new(publisher, cover_state, publish_date)
-
+  book.move_to_archive
   # author.add_item(book)
   label.add_item(book)
   # genre.add_item(book)
