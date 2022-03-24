@@ -12,6 +12,7 @@ def list_all_books
   sleep 0.75
 end
 
+# rubocop:disable  Metrics//PerceivedComplexity
 def list_all_labels
   data = SaveData.new
   music_album_list = data.read_from_file('./files/musicalbums.json')
@@ -42,3 +43,4 @@ def list_all_labels
     puts game_list.map { |game| game['genre']['name'] }.uniq
   end
 end
+# rubocop:enable  Metrics//PerceivedComplexity
