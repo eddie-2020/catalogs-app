@@ -10,7 +10,7 @@ class App
 
     @create_album = CreateMusicAlbum.new
     @list_albums = ListMusicAlbums.new
-    @list_genres= ListGenres.new
+    @list_genres = ListGenres.new
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
@@ -24,6 +24,7 @@ class App
       exit!
     end
   end
+
   # check if file exist and creates file if not
   def check_files
     File.open('./files/musicalbums.json', 'a') unless File.exist?('./files/musicalbums.json')
@@ -116,9 +117,6 @@ class App
   end
 
   def add_book; end
-
-
-   
 
   def add_movie; end
 

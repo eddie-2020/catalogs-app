@@ -1,12 +1,10 @@
 require 'date'
 # frozen_string_literal: true
 
-# rubocop: disable Style/OptionalBooleanParamete
 class Item
-  attr_accessor :publish_date, :archived
+  attr_accessor :publish_date, :archived, :author, :source, :label, :genre
   attr_reader :id
-  attr_accessor :author, :source, :label, :genre
-  
+
   def initialize(publish_date)
     @id = Random.rand(1..1000)
     @publish_date = Date.parse(publish_date)
@@ -39,11 +37,6 @@ class Item
 
   def move_to_archive
     # @archived = true if can_be_archived? == true
-    if can_be_archived?
-      @archived = true
-    else
-      @archived = false
-    end
+    @archived = can_be_archived?
   end
 end
-# rubocop: enable Style/OptionalBooleanParamete
