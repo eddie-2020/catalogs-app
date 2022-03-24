@@ -1,6 +1,5 @@
 require 'date'
 require 'pry'
-require_relative './musicalbum'
 require_relative './game'
 require_relative './create'
 require_relative './list'
@@ -9,12 +8,9 @@ class App
   def run
     check_files
 
-    @create_album = CreateMusicAlbum.new
     @create_game = CreateGames.new
     @list_games = ListGames.new
     @list_authors = ListAuthors.new
-    @list_albums = ListMusicAlbums.new
-    @list_genres = ListGenres.new
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
@@ -61,13 +57,13 @@ class App
     when 1
       list_all_books
     when 2
-      @list_albums.display
+      list_albums
     when 3
       list_all_movies
     when 4
       @list_games.display
     when 5
-      @list_genres.display
+      list_genres
     when 6
       list_all_labels
     when 7
@@ -77,7 +73,7 @@ class App
     when 9
       add_book
     when 10
-      @create_album.create
+      create_album
     when 11
       add_movie
     when 12

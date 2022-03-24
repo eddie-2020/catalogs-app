@@ -1,79 +1,8 @@
-require_relative './musicalbum'
 require_relative './game'
-require_relative './author'
 require_relative './item'
 require_relative './save_data'
-# require_relative './label'
-# require_relative './author'
-require_relative './genre'
+require_relative './author'
 require_relative './to_hash'
-
-class CreateMusicAlbum
-  # rubocop:disable  Metrics/MethodLength
-  def create
-    data = SaveData.new
-    to_hash = ToHash.new
-
-    # get publish date
-    print "\nEnter Publish Date [YYYY/MM/DD]: "
-    publish_date = gets.chomp.to_s
-
-    # get if album is on spotify
-    print "\nIs music album on spotify? [Y/N]: "
-    value = gets.chomp.downcase
-    case value
-    when 'y' || 'Y'
-      on_spotify = true
-    else
-      on_spotify = false
-      puts "\n[INVALID]: No Spotify..."
-    end
-
-    # get album genre
-    puts "\nEnter Album Genre: "
-    genre_name = gets.chomp
-
-    # rubocop:disable Lint/UselessAssignment
-    puts '----'
-    puts 'This album was created by?'
-    puts '----'
-    print '[First name]: '
-    first_name = gets.chomp
-    print "\n[Last name]: "
-    last_name = gets.chomp
-    # get album label
-    puts '----'
-    puts "What is the album\'s title and color?"
-    puts '----'
-    print "[Album\'s title]: "
-    title = gets.chomp
-    print "\n[Album\'s color]: "
-    color = gets.chomp
-    # check if archived
-    print "\nIs album archived? [Y/N]: "
-    can_be_archived = gets.chomp.downcase
-    case can_be_archived
-    when 'y' || 'Y'
-      archived = true
-    else
-      archived = false
-      puts "\n[INVALID]: Not archived yet..."
-    end
-    # rubocop:enable Lint/UselessAssignment
-
-    genre = Genre.new(genre_name)
-
-    musicalbum = MusicAlbum.new(publish_date, on_spotify)
-
-    genre.add_item(musicalbum)
-
-    musicalbum_hash = to_hash.to_hash(musicalbum)
-
-    data.write_to_file('./files/musicalbums.json', musicalbum_hash)
-    puts "\n#{title} by #{first_name} #{last_name} album was created successfully"
-  end
-  # rubocop:enable  Metrics/MethodLength
-end
 
 class CreateGames
   # rubocop:disable  Metrics/MethodLength
