@@ -1,9 +1,14 @@
 require_relative './book'
 require_relative './label'
+require_relative './save-data'
+require_relative './to-hash'
 # require_relative './author'
 # require_relative './genre'
 
 def add_book
+  data = SaveData.new
+  to_hash = ToHash.new
+
   puts 'Please enter the books name'
   title = gets.chomp
 
@@ -36,11 +41,13 @@ def add_book
   # genre = Genre.new(name)
 
   book = Book.new(publisher, cover_state, publish_date)
-  @books.push(book)
 
   # author.add_item(book)
   label.add_item(book)
   # genre.add_item(book)
+
+  book_hash = to_hash.to_hash(book)
+  data.write_to_file('./files/books.json', book_hash)
 
   puts 'Book successfully added!'
   sleep 0.75

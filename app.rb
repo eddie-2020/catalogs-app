@@ -2,12 +2,9 @@ require_relative './create'
 require_relative './list'
 
 class App
-  def initialize
-    @books = []
-    @labels = []
-  end
-
   def run
+    check_files
+
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
@@ -17,6 +14,12 @@ class App
       break if option == '13'
     end
     puts 'Thank you for using the Catalog of Things!'
+  end
+
+  def check_files
+    File.open('./files/musicalbums.json', 'a') unless File.exist?('./files/musicalbums.json')
+    File.open('./files/games.json', 'a') unless File.exist?('./files/games.json')
+    File.open('./files/books.json', 'a') unless File.exist?('./files/books.json')
   end
 
   def menu
