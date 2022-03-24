@@ -1,19 +1,18 @@
 require 'date'
 # frozen_string_literal: true
 
-# rubocop: disable Style/OptionalBooleanParamete
 class Item
-  attr_accessor :publish_date, :archived
+  attr_accessor :publish_date, :archived, :author, :source, :label, :genre
   attr_reader :id
-  attr_accessor :author, :source, :label, :genre
-  
-  def initialize(publish_date, archived = false)
+
+  def initialize(publish_date, archived: true)
     @id = Random.rand(1..1000)
     @publish_date = publish_date
     @archived = archived
   end
 
   # setter methods
+  # rubocop:disable Lint/DuplicateMethods
   def genre=(genre)
     @genre = genre
     genre.items.push(self) unless genre.items.include?(self)
@@ -43,5 +42,5 @@ class Item
   def move_to_archive
     @archived = true if can_be_archived? == true
   end
+  # rubocop:enable Lint/DuplicateMethods
 end
-# rubocop: enable Style/OptionalBooleanParamete

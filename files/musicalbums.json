@@ -1,1 +1,68 @@
-[{"id":13,"publish_date":"345436","archived":false,"on_spotify":true,"genre":{"id":259,"name":"bluz","items":["#<MusicAlbum:0x000001f4cff7a768>"]}},{"id":822,"publish_date":"4543656","archived":false,"on_spotify":true,"genre":{"id":960,"name":"nn","items":["#<MusicAlbum:0x000002249ea0e0c8>"]}},{"id":917,"publish_date":"35345","archived":false,"on_spotify":true,"genre":{"id":451,"name":"nn","items":["#<MusicAlbum:0x00000195d4e2de78>"]}}]
+[
+  {
+    "id": 224,
+    "publish_date": "2003/09/23",
+    "archived": true,
+    "on_spotify": false,
+    "genre": {
+      "id": 900,
+      "name": "Dhmmmm",
+      "items": ["#<MusicAlbum:0x0000016507adac38>"]
+    }
+  },
+  {
+    "id": 405,
+    "publish_date": "2018/03/22",
+    "archived": true,
+    "on_spotify": false,
+    "genre": {
+      "id": 425,
+      "name": "Schhhhh!",
+      "items": ["#<MusicAlbum:0x000001fc92f754f0>"]
+    }
+  },
+  {
+    "id": 451,
+    "publish_date": "324324",
+    "archived": true,
+    "on_spotify": false,
+    "genre": {
+      "id": 666,
+      "name": "Hmmm",
+      "items": ["#<MusicAlbum:0x000002e3e7c8d2f0>"]
+    }
+  },
+  {
+    "id": 13,
+    "publish_date": "345436",
+    "archived": false,
+    "on_spotify": true,
+    "genre": {
+      "id": 259,
+      "name": "bluz",
+      "items": ["#<MusicAlbum:0x000001f4cff7a768>"]
+    }
+  },
+  {
+    "id": 822,
+    "publish_date": "4543656",
+    "archived": false,
+    "on_spotify": true,
+    "genre": {
+      "id": 960,
+      "name": "nn",
+      "items": ["#<MusicAlbum:0x000002249ea0e0c8>"]
+    }
+  },
+  {
+    "id": 917,
+    "publish_date": "35345",
+    "archived": false,
+    "on_spotify": true,
+    "genre": {
+      "id": 451,
+      "name": "nn",
+      "items": ["#<MusicAlbum:0x00000195d4e2de78>"]
+    }
+  }
+]

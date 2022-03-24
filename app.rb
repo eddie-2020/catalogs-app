@@ -1,6 +1,7 @@
 require 'date'
 require 'pry'
 require_relative './musicalbum'
+require_relative './game'
 require_relative './create'
 require_relative './list'
 
@@ -9,8 +10,11 @@ class App
     check_files
 
     @create_album = CreateMusicAlbum.new
+    @create_game = CreateGames.new
+    @list_games = ListGames.new
+    @list_authors = ListAuthors.new
     @list_albums = ListMusicAlbums.new
-    @list_genres= ListGenres.new
+    @list_genres = ListGenres.new
     puts 'Welcome to Catalog of Things!'
     loop do
       menu
@@ -24,6 +28,7 @@ class App
       exit!
     end
   end
+
   # check if file exist and creates file if not
   def check_files
     File.open('./files/musicalbums.json', 'a') unless File.exist?('./files/musicalbums.json')
@@ -60,13 +65,13 @@ class App
     when 3
       list_all_movies
     when 4
-      list_all_games
+      @list_games.display
     when 5
       @list_genres.display
     when 6
       list_all_labels
     when 7
-      list_all_authors
+      @list_authors.display
     when 8
       list_all_sources
     when 9
@@ -76,9 +81,7 @@ class App
     when 11
       add_movie
     when 12
-      add_game
-    else
-      puts 'Please enter a number between 1 and 13'
+      @create_game.create
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
@@ -117,12 +120,5 @@ class App
 
   def add_book; end
 
-
-   
-
   def add_movie; end
-
-  def add_game
-    puts 'Your games were created successfully!'
-  end
 end
