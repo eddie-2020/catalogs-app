@@ -11,6 +11,7 @@ class Item
   end
 
   # setter methods
+  # rubocop:disable Lint/DuplicateMethods
   def genre=(genre)
     @genre = genre
     genre.items.push(self) unless genre.items.include?(self)
@@ -39,4 +40,5 @@ class Item
     # @archived = true if can_be_archived? == true
     @archived = can_be_archived?
   end
+  # rubocop:enable Lint/DuplicateMethods
 end
