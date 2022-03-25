@@ -116,7 +116,7 @@ def list_all_books
     puts 'No Book in the library'
   else
     books.each_with_index do |book, index|
-      puts "(#{index + 1}) Book Name: #{book['label']['title']}, Author: #{book['author']['first_name']} #{book['author']['first_name']}"
+      puts "(#{index + 1}) Book Name: #{book['label']['title']}, Author: #{book['author']['first_name']} #{book['author']['last_name']}"
     end
   end
   sleep 0.75
