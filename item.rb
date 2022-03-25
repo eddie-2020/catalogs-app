@@ -38,5 +38,4 @@ class Item
 
     year > 10
   end
-  # rubocop:enable Lint/DuplicateMethods
 end

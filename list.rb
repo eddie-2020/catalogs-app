@@ -29,7 +29,7 @@ class ListAuthors
     if author_list == 1
       puts 'No Book genres in the library. Please add a game item.'
     else
-      puts author_list.map { |author| author['author'] ['first_name']}
+      puts(author_list.map { |author| author['author'] ['first_name'] })
       puts '------'
       puts "Author\'s Listed Successfully!"
       puts '------'

@@ -68,6 +68,7 @@ class App
       list_all_labels
     when 7
       @list_authors.display
+    # rubocop:disable Lint/DuplicateBranch
     when 8
       puts "\nUnder Construction..."
     when 9
@@ -76,6 +77,7 @@ class App
       create_album
     when 11
       puts "\nUnder Construction..."
+    # rubocop:enable Lint/DuplicateBranch
     when 12
       @create_game.create
     end

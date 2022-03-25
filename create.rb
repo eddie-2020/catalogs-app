@@ -5,6 +5,7 @@ require_relative './author'
 require_relative './to_hash'
 
 class CreateGames
+  # rubocop:disable Metrics/MethodLength
   def create
     data = SaveData.new
     to_hash = ToHash.new
@@ -44,8 +45,10 @@ class CreateGames
 
     # Check if game is archive
     puts '----'
-    print "Is game archive?"
+    puts 'Is game archive?'
     puts '----'
+
+    print 'Archive? [y/n]: '
     can_be_archived = gets.chomp.downcase
     # rubocop:disable Lint/UselessAssignment
     case can_be_archived
@@ -73,4 +76,5 @@ class CreateGames
     data.write_to_file('./files/games.json', game_hash)
     puts "\n#{title} game was created successfully!"
   end
+  # rubocop:enable Metrics/MethodLength
 end
