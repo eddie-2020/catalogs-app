@@ -70,19 +70,83 @@ end
 
 class ListAuthors
   def display
-    data = SaveData.new
     # Get all json file
-    author_list = data.read_from_file('./files/games.json')
+    data = SaveData.new
+    music_album_list = data.read_from_file('./files/musicalbums.json')
+    book_list = data.read_from_file('./files/books.json')
+    game_list = data.read_from_file('./files/games.json')
+
     puts '----'
     puts 'Games Author[s]'
     puts '----'
-    if author_list == 1
+    if game_list == 1
       puts 'No Book genres in the library. Please add a game item.'
     else
-      puts author_list.map { |author| author['author'].to_a }.uniq
+      puts game_list.map { |author| author['author'].to_a }.uniq
       puts '------'
       puts "Author\'s Listed Successfully!"
       puts '------'
     end
+    puts "\nMusic Author[s]"
+    puts '---------------'
+    if music_album_list == 1
+      puts 'No Music labels in the library. Please add a music album.'
+    else
+      puts music_album_list.map { |musicalbum| musicalbum['author'].to_a }.uniq
+    end
+    puts "\nBook Author[s]"
+    puts '---------------'
+    if book_list == 1
+      puts 'No Book labels in the library.Please add a book item.'
+    else
+      puts book_list.map { |book| book['author'].to_a }.uniq
+    end
   end
 end
+
+def list_all_books
+  data = SaveData.new
+  books = data.read_from_file('./files/books.json')
+
+  if books == 1
+    puts 'No Book in the library'
+  else
+    books.each_with_index do |book, index|
+      puts "(#{index + 1}) Book Name: #{book['label']['title']}, Author: #{book['author']['first_name']} #{book['author']['first_name']}"
+    end
+  end
+  sleep 0.75
+end
+
+# rubocop:disable  Metrics//PerceivedComplexity
+def list_all_labels
+  data = SaveData.new
+  music_album_list = data.read_from_file('./files/musicalbums.json')
+  book_list = data.read_from_file('./files/books.json')
+  game_list = data.read_from_file('./files/games.json')
+
+  puts "\nMusic Labels"
+  puts '---------------'
+  if music_album_list == 1
+    puts 'No Music labels in the library. Please add a music album.'
+  else
+    puts music_album_list.map { |musicalbum| musicalbum['label']['title'] }.uniq
+  end
+
+  puts "\nBook Labelss"
+  puts '---------------'
+  if book_list == 1
+    puts 'No Book labels in the library.Please add a book item.'
+  else
+    puts book_list.map { |book| book['label']['title'] }.uniq
+  end
+
+  puts "\nGame Labels"
+  puts '---------------'
+  if game_list == 1
+    puts 'No Book labels in the library. Please add a game item.'
+  else
+    puts game_list.map { |game| game['label']['title'] }.uniq
+  end
+end
+# rubocop:enable  Metrics//PerceivedComplexity

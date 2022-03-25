@@ -3,6 +3,10 @@ require_relative './item'
 require_relative './save_data'
 require_relative './musicalbum'
 require_relative './to_hash'
+require_relative './book'
+require_relative './label'
+require_relative './author'
+require_relative './genre'
 
 class CreateMusicAlbum
   # rubocop:disable  Metrics/MethodLength
@@ -50,12 +54,16 @@ class CreateMusicAlbum
     color = gets.chomp
 
     genre = Genre.new(genre_name)
+    author = Author.new(first_name, last_name)
+    label = Label.new(title, color)
 
     musicalbum = MusicAlbum.new(publish_date, on_spotify)
 
-    archived = musicalbum.move_to_archive?
+    archived = musicalbum.move_to_archive
 
     genre.add_item(musicalbum)
+    author.add_item(musicalbum)
+    label.add_item(musicalbum)
 
     musicalbum_hash = to_hash.to_hash(musicalbum)
     data.write_to_file('./files/musicalbums.json', musicalbum_hash)
@@ -64,7 +72,6 @@ class CreateMusicAlbum
 end
 
 class CreateGames
-  # rubocop:disable  Metrics/MethodLength
   def create
     data = SaveData.new
     to_hash = ToHash.new
@@ -92,7 +99,9 @@ class CreateGames
     puts '----'
     print "[Enter Game\'s title]: "
     title = gets.chomp
-    # rubocop:disable Lint/UselessAssignment
+    puts '----'
+    print "[Enter Game\'s Color]: "
+    color = gets.chomp
     print "\n[Enter Game\'s type] (Adventure, Action, Racing...): "
     type = gets.chomp
     # rubocop:enable Lint/UselessAssignment
@@ -115,11 +124,15 @@ class CreateGames
 
     # Get author class attributes
     author = Author.new(first_name, last_name)
+    label = Label.new(title, color)
+    genre = Genre.new(type)
 
     # Get game class attributes
     game = Game.new(multiplayer, last_played_at, publish_date)
 
     author.add_item(game)
+    label.add_item(game)
+    genre.add_item(game)
 
     # Save in hash format
     game_hash = to_hash.to_hash(game)
@@ -129,4 +142,52 @@ class CreateGames
     puts "\n#{title} game was created successfully!"
   end
   # rubocop:enable  Metrics/MethodLength
+end
+
+def add_book
+  data = SaveData.new
+  to_hash = ToHash.new
+
+  puts 'Please enter the books name'
+  title = gets.chomp
+
+  puts 'Please enter the books color'
+  color = gets.chomp
+
+  puts 'Please enter the authors first name'
+  first_name = gets.chomp
+
+  puts 'Please enter the authors last name'
+  last_name = gets.chomp
+
+  puts 'Please enter the genre'
+  name = gets.chomp
+
+  puts 'Please enter the publisher'
+  publisher = gets.chomp
+
+  puts 'Please enter the state of the cover(good or bad)'
+  cover_state = gets.chomp
+
+  puts 'Please enter publish date in the following formet[yy-mm-dd]'
+  publish_date = gets.chomp.to_s
+
+  puts 'Has the book been archived? [true/false]'
+  archived = gets.chomp.downcase == 'y'
+
+  author = Author.new(first_name, last_name)
+  label = Label.new(title, color)
+  genre = Genre.new(name)
+
+  book = Book.new(publisher, cover_state, publish_date)
+  book.move_to_archive
+  author.add_item(book)
+  label.add_item(book)
+  genre.add_item(book)
+
+  book_hash = to_hash.to_hash(book)
+  data.write_to_file('./files/books.json', book_hash)
+
+  puts 'Book successfully added!'
+  sleep 0.75
 end
