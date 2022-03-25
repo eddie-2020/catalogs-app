@@ -1,70 +1,10 @@
 require_relative './game'
 require_relative './item'
 require_relative './save_data'
-require_relative './musicalbum'
+require_relative './author'
 require_relative './to_hash'
 
-class CreateMusicAlbum
-  # rubocop:disable  Metrics/MethodLength
-  def create
-    data = SaveData.new
-    to_hash = ToHash.new
-
-    # get publish date
-    print "\nEnter Publish Date [YYYY/MM/DD]: "
-    publish_date = gets.chomp.to_s
-
-    # get if album is on spotify
-    print "\nIs music album on spotify? [Y/N]: "
-    value = gets.chomp.downcase
-    case value
-    when 'y' || 'Y'
-      on_spotify = true
-    else
-      on_spotify = false
-      puts "\n[INVALID]: No Spotify..."
-    end
-
-    # get album genre
-    puts "\nEnter Album Genre: "
-    genre_name = gets.chomp
-
-    # rubocop:disable Lint/UselessAssignment
-
-    # get album author/singer
-    puts '----'
-    puts 'This album was created by?'
-    puts '----'
-    print '[First name]: '
-    first_name = gets.chomp
-    print "\n[Last name]: "
-    last_name = gets.chomp
-
-    # get album label
-    puts '----'
-    puts "What is the album\'s title and color?"
-    puts '----'
-    print "[Album\'s title]: "
-    title = gets.chomp
-    print "\n[Album\'s color]: "
-    color = gets.chomp
-
-    genre = Genre.new(genre_name)
-
-    musicalbum = MusicAlbum.new(publish_date, on_spotify)
-
-    archived = musicalbum.move_to_archive?
-
-    genre.add_item(musicalbum)
-
-    musicalbum_hash = to_hash.to_hash(musicalbum)
-    data.write_to_file('./files/musicalbums.json', musicalbum_hash)
-    puts "\n#{title} by #{first_name} #{last_name} album was created successfully"
-  end
-end
-
 class CreateGames
-  # rubocop:disable  Metrics/MethodLength
   def create
     data = SaveData.new
     to_hash = ToHash.new
@@ -73,11 +13,15 @@ class CreateGames
     print "\nEnter multiplayer: "
     multiplayer = gets.chomp
 
+    # Get last played at
     print "\nEnter last played at [YYYY/MM/DD]: "
     last_played_at = gets.chomp
 
+    # Get publish date
     print "\nEnter publish date [YYYY/MM/DD]: "
     publish_date = gets.chomp
+
+    # Get author's details
     puts '----'
     puts 'Who created the game?'
     puts '----'
@@ -92,16 +36,16 @@ class CreateGames
     puts '----'
     print "[Enter Game\'s title]: "
     title = gets.chomp
+
     # rubocop:disable Lint/UselessAssignment
     print "\n[Enter Game\'s type] (Adventure, Action, Racing...): "
-    type = gets.chomp
+    type_of_game = gets.chomp
     # rubocop:enable Lint/UselessAssignment
 
-    # Check if game is archived
+    # Check if game is archive
     puts '----'
-    puts "Are the inserted game\'s archived yet?"
+    print "Is game archive?"
     puts '----'
-    print 'Is game archived? [Y/N]: '
     can_be_archived = gets.chomp.downcase
     # rubocop:disable Lint/UselessAssignment
     case can_be_archived
@@ -117,16 +61,16 @@ class CreateGames
     author = Author.new(first_name, last_name)
 
     # Get game class attributes
+
     game = Game.new(multiplayer, last_played_at, publish_date)
 
     author.add_item(game)
 
-    # Save in hash format
+    # Save game in hash format
     game_hash = to_hash.to_hash(game)
 
-    # Save in game.json
+    # Save data in game.json
     data.write_to_file('./files/games.json', game_hash)
     puts "\n#{title} game was created successfully!"
   end
-  # rubocop:enable  Metrics/MethodLength
 end
