@@ -4,13 +4,16 @@ class Item
   attr_accessor :publish_date, :archived, :author, :source, :label, :genre
   attr_reader :id
 
-  def initialize(publish_date)
+  # rubocop:disable Style/OptionalBooleanParameter
+  def initialize(publish_date, archived = false)
     @id = Random.rand(1..1000)
     @publish_date = Date.parse(publish_date)
+    @archived = archived
   end
-
+  # rubocop:enable Style/OptionalBooleanParameter
   # setter methods
   # rubocop:disable Lint/DuplicateMethods
+
   def genre=(genre)
     @genre = genre
     genre.items.push(self) unless genre.items.include?(self)

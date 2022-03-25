@@ -35,6 +35,7 @@ class ListGames
 end
 
 class ListGenres
+  # rubocop:disable Metrics/PerceivedComplexity
   def display
     data = SaveData.new
     # List genres from books, games, and music albums
@@ -66,9 +67,11 @@ class ListGenres
       puts game_list.map { |game| game['genre']['name'] }.uniq
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
 end
 
 class ListAuthors
+  # rubocop:disable Metrics/PerceivedComplexity
   def display
     # Get all json file
     data = SaveData.new
@@ -82,7 +85,7 @@ class ListAuthors
     if game_list == 1
       puts 'No Book genres in the library. Please add a game item.'
     else
-      puts game_list.map { |author| author['author'].to_a }.uniq
+      puts game_list.map { |author| author['author']['last_name'] }.uniq
       puts '------'
       puts "Author\'s Listed Successfully!"
       puts '------'
@@ -92,16 +95,17 @@ class ListAuthors
     if music_album_list == 1
       puts 'No Music labels in the library. Please add a music album.'
     else
-      puts music_album_list.map { |musicalbum| musicalbum['author'].to_a }.uniq
+      puts music_album_list.map { |musicalbum| musicalbum['author']['last_name'] }.uniq
     end
     puts "\nBook Author[s]"
     puts '---------------'
     if book_list == 1
       puts 'No Book labels in the library.Please add a book item.'
     else
-      puts book_list.map { |book| book['author'].to_a }.uniq
+      puts book_list.map { |book| book['author']['last_name'] }.uniq
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
 end
 
 def list_all_books

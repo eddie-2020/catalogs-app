@@ -1,46 +1,20 @@
 # Ruby-Capstone-Project
 
-Here in this project we have implemented the following requirements:
-
-- Create Item class in a separate .rb file.
-
-- All Item class properties visible in the diagram should be defined and set up in the constructor method. Exception: properties for the 1-to-many relationships should NOT be set in the constructor method. Instead, they should have a custom setter method created.
-
-- Add all methods visible in the diagram.
-
-- Implement methods:
-  - can_be_archived?() in the Item class
-    - should return true if published_date is older than 10 years
-    - otherwise, it should return false
-  - move_to_archive() in the Item class
-    - should reuse can_be_archived?() method
-    - should change the archived property to true if the result of the can_be_archived?() method is true
-    - should do nothing if the result of the can_be_archived?() method is false
-
-- Create a main.rb file that will serve as your console app entry-point.
-- Implement startup actions:
-  - Present the user with a list of options to perform.
-  - Let users choose an option.
-  - If needed, ask for parameters for the option.
-  - Have a way to quit the app.
+In this project we created a console app that helps you to keep a record of different types of things you won: books, music albums and games. Everything is be based on the UML class diagram presented below. The data is stored in JSON files but a database has also been prepared with tables structure analogical to the projects class structure.
 
 ## Technologies Used
 
 * Language (Ruby)
+* SQL
+* Testing library Rspec
+
+## UML class diagram
+
+![UML class diagram](./catalog_of_my_things.png "UML diagram").
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
-
-## Prerequisites
-* A text editor(preferably Visual Studio Code)
-
-## Installation
-* Ruby
-* JSON gem
-* Rspec gem
-
-## Using it Locally
+This repository makes use of Ruby as its core programming language :
 
 * Clone the repo using the command below
 
@@ -59,6 +33,14 @@ cd Ruby-Capstone-Project
 ```
 ruby main.rb
 ```
+
+## Prerequisites
+* A text editor(preferably Visual Studio Code)
+
+## Installation
+* Ruby
+* JSON gem
+* Rspec gem
 
 ## Testing
 
@@ -79,14 +61,14 @@ rspec spec ./spec
 
 ## 👤 Author 
 Fikerte-T :student: 
-* Github: [@Fikerte-T](https://github.com/Fikerte-T)
-* Twitter: []()
-* LinkedIn: []()
+- GitHub: [@Fikerte-T](https://github.com/Fikerte-T)
+- Twitter: [@tofikertesfaye](https://twitter.com/tofikertesfaye)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/fikerte-tesfaye-a68337216/)
 
 Hamza Tarar :student: 
-* Github: [@Hamza Tarar](https://github.com/Lockless404)
-* Twitter: []()
-* LinkedIn: []()
+- GitHub: [@Lockless404](https://github.com/Lockless404)
+- Twitter: [@hamza_tarar10](https://twitter.com/hamza_tarar10)
+- LinkedIn: [Hamza Tarar](https://www.linkedin.com/in/hamzaalitarar/)
 
 Edward Yara :student: 
 - GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)

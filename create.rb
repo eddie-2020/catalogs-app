@@ -106,22 +106,6 @@ class CreateGames
     type = gets.chomp
     # rubocop:enable Lint/UselessAssignment
 
-    # Check if game is archived
-    puts '----'
-    puts "Are the inserted game\'s archived yet?"
-    puts '----'
-    print 'Is game archived? [Y/N]: '
-    can_be_archived = gets.chomp.downcase
-    # rubocop:disable Lint/UselessAssignment
-    case can_be_archived
-    when 'y' || 'Y'
-      archived = true
-    else
-      archived = false
-      puts "\n[INVALID]: Not archived yet..."
-    end
-    # rubocop:enable Lint/UselessAssignment
-
     # Get author class attributes
     author = Author.new(first_name, last_name)
     label = Label.new(title, color)
@@ -129,7 +113,7 @@ class CreateGames
 
     # Get game class attributes
     game = Game.new(multiplayer, last_played_at, publish_date)
-
+    game.move_to_archive
     author.add_item(game)
     label.add_item(game)
     genre.add_item(game)
@@ -171,9 +155,6 @@ def add_book
 
   puts 'Please enter publish date in the following formet[yy-mm-dd]'
   publish_date = gets.chomp.to_s
-
-  puts 'Has the book been archived? [true/false]'
-  archived = gets.chomp.downcase == 'y'
 
   author = Author.new(first_name, last_name)
   label = Label.new(title, color)

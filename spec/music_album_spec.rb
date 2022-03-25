@@ -2,7 +2,7 @@ require_relative '../musicalbum'
 describe MusicAlbum do
   describe 'Initialize music album' do
     before(:each) do
-      @musicalbum = MusicAlbum.new('2022-03/24', true)
+      @musicalbum = MusicAlbum.new('2022/03/24', true)
     end
     it 'creates a new music album' do
       expect(@musicalbum).to be_an_instance_of MusicAlbum
