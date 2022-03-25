@@ -1,4 +1,5 @@
 require_relative '../game'
+require 'date'
 
 describe Game do
   context 'Initialize Game Class' do
@@ -13,7 +14,7 @@ describe Game do
     end
 
     it 'should return valid if game publish date is an instance of game' do
-      expect(game.publish_date).to eq '2004/11/13'
+      expect(game.publish_date).to eq Date.parse('2004/11/13')
     end
 
     it 'should return valid result if game can be archived' do
