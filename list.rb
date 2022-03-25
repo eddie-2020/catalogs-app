@@ -22,7 +22,7 @@ class ListGames
   def display
     data = SaveData.new
     game_list = data.read_from_file('./files/games.json')
-    if game_list.length.zero?
+    if game_list == 1
       puts 'There are no games in store for you...'
     else
       game_list.each_with_index do |game, index|
