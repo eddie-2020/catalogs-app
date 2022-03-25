@@ -1,3 +1,4 @@
+
 def list_all_books
   data = SaveData.new
   books = data.read_from_file('./files/books.json')
@@ -44,3 +45,4 @@ def list_all_labels
   end
 end
 # rubocop:enable  Metrics//PerceivedComplexity
+
