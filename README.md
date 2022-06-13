@@ -1,6 +1,6 @@
 # Ruby-Capstone-Project
 
-In this project we created a console app that helps you to keep a record of different types of things you won: books, music albums and games. Everything is be based on the UML class diagram presented below. The data is stored in JSON files but a database has also been prepared with tables structure analogical to the projects class structure.
+In this project we created a console app that helps you to keep a record of different types of things you won: books, music albums and games. Everything is based on the UML class diagram presented in the project requirements. The data is stored in JSON files but a database has also been prepared with tables structure analogical to the projects class structure.
 
 ## Technologies Used
 
